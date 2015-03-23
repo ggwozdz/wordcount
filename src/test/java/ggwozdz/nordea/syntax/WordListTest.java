@@ -1,7 +1,8 @@
 package ggwozdz.nordea.syntax;
 
-import static org.junit.Assert.*;
-import ggwozdz.nordea.Main;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 import ggwozdz.nordea.TestUtils;
 
 import org.junit.Test;
@@ -15,7 +16,7 @@ public class WordListTest {
 	public void testWordListFromEmptySentence() {
 		TestUtils.logTestName(LOG);
 		
-		WordList wordList = new WordList("");
+		WordList wordList = WordList.from("");
 		assertNotNull(wordList);
 		assertTrue(wordList.getSortedWords().isEmpty());		
 	}
@@ -24,7 +25,7 @@ public class WordListTest {
 	public void testWordListFromSimpleSentence() {
 		TestUtils.logTestName(LOG);
 		
-		WordList wordList = new WordList("Mary had a little lamb.");
+		WordList wordList = WordList.from("Mary had a little lamb.");
 		LOG.trace("wordList: {}", wordList);
 		
 		assertNotNull(wordList);
@@ -40,7 +41,7 @@ public class WordListTest {
 	public void testWordListFromCompoundSentence() {
 		TestUtils.logTestName(LOG);
 		
-		WordList wordList = new WordList("\"Peter   called for the wolf   ,  and 'Aesop' came .'");
+		WordList wordList = WordList.from("\"Peter   called for the wolf   ,  and 'Aesop' came .'");
 		assertNotNull(wordList);
 		
 		LOG.trace("wordList: {}", wordList);

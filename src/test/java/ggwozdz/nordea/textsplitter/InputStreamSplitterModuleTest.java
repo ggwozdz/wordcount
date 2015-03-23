@@ -1,16 +1,14 @@
 package ggwozdz.nordea.textsplitter;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import ggwozdz.nordea.TestUtils;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 import java.util.function.Consumer;
-
-import ggwozdz.nordea.TestUtils;
-import ggwozdz.nordea.textprocessor.TextProcessor;
-import ggwozdz.nordea.textprocessor.TextProcessorModule;
 
 import org.junit.Test;
 import org.slf4j.Logger;

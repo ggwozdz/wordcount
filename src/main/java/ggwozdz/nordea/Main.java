@@ -1,7 +1,7 @@
 package ggwozdz.nordea;
 
-import ggwozdz.nordea.textprocessor.TextProcessor;
-import ggwozdz.nordea.textprocessor.TextProcessorModule;
+import ggwozdz.nordea.texttransform.TextTranformModule;
+import ggwozdz.nordea.texttransform.TextTransformer;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -52,11 +52,11 @@ public class Main {
 	
 	public static void initAndRun(InputStream inputData, OutputFormat outputFormat) throws IOException{
 		LOG.info("Bootstraping the application");
-		Injector injector = Guice.createInjector(new TextProcessorModule());
-		TextProcessor textProcessor = injector.getInstance(TextProcessor.class);
+		Injector injector = Guice.createInjector(new TextTranformModule());
+		TextTransformer textTransformer = injector.getInstance(TextTransformer.class);
 		
 		LOG.info("Reading data from standard input...");
-		textProcessor.processText(inputData, outputFormat);
+		textTransformer.processText(inputData, System.out, outputFormat);
 	}
 
 	@SuppressWarnings("static-access")

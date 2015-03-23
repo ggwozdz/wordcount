@@ -3,7 +3,6 @@ package ggwozdz.nordea;
 import org.slf4j.Logger;
 
 import com.google.common.base.CaseFormat;
-import com.google.common.base.Splitter;
 
 public class TestUtils {
 	public static void logTestName(Logger logger){

@@ -1,7 +1,10 @@
 package ggwozdz.nordea.syntax;
 
 import java.util.List;
+import java.util.function.Consumer;
+import java.util.stream.Stream;
 
+import com.google.common.base.Joiner;
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
 import com.google.common.base.Splitter;
@@ -9,24 +12,29 @@ import com.google.common.collect.ComparisonChain;
 import com.google.common.collect.Lists;
 
 public final class WordList implements Comparable<WordList>{
+	private static final Joiner JOINER = Joiner.on(",");
 	private static final String SEPARATOR_PATTERN = "\\W";
 
-	private final String       initialSentence;
-	private final List<String> sortedWords;
-	
+	private final List<String> sortedWords;	
 	private final int hashCode;
 	
-	public WordList(String sentence){
-		this.initialSentence = sentence.trim();		
-		this.sortedWords     = splitSentenceAndSortWords(this.initialSentence);
-		
-		this.hashCode = this.sortedWords.hashCode();
+	private WordList(String sentence){
+		this.sortedWords = splitSentenceAndSortWords(sentence.trim());
+		this.hashCode    = this.sortedWords.hashCode();
 	}
 	
-	public String getInitialSentence() {
-		return initialSentence;
+	public static WordList from(String sentence){
+		return new WordList(sentence);
 	}
-
+	
+	public void forEach(Consumer<String> action) {
+        this.sortedWords.forEach(action);
+	}
+	
+	public Stream<String> stream(){
+		return this.sortedWords.stream();
+	}
+	
 	public List<String> getSortedWords() {
 		return sortedWords;
 	}
@@ -60,14 +68,13 @@ public final class WordList implements Comparable<WordList>{
 	@Override
 	public int compareTo(WordList other) {
 		return ComparisonChain.start()
-			.compare(this.initialSentence, other.initialSentence)
+			.compare(JOINER.join(this.sortedWords), JOINER.join(other.sortedWords))
 			.result();
 	}
 	
 	@Override
 	public String toString() {
-		return MoreObjects.toStringHelper(this)
-			.add("initialSentence", this.initialSentence)
+		return MoreObjects.toStringHelper(this)			
 			.add("sortedWords", this.sortedWords)
 			.toString();
 	}

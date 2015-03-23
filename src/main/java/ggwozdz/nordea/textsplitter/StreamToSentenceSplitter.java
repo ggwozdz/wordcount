@@ -8,12 +8,7 @@ import java.util.function.Consumer;
 
 import javax.inject.Inject;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 public class StreamToSentenceSplitter implements InputStreamSplitter {
-	private static final Logger LOG = LoggerFactory.getLogger(StreamToSentenceSplitter.class);
-	
 	private final OnSentenceEndSplitter lineSplitter;
 	
 	@Inject
@@ -27,7 +22,7 @@ public class StreamToSentenceSplitter implements InputStreamSplitter {
 			StringBuilder currSentence = new StringBuilder();		
 			String prevSplit = null;
 			while(scanner.hasNext()){
-				String currLine             = scanner.nextLine();//this.removePunctuationWithoutSentenceTerminators(scanner.nextLine());
+				String currLine             = scanner.nextLine();
 				List<String> currLineSplits = lineSplitter.splitLine(currLine);
 												
 				for (String lineSplit : currLineSplits) {
