@@ -21,7 +21,7 @@ import javax.inject.Inject;
 import com.google.common.io.ByteStreams;
 import com.google.common.io.Files;
 
-public final class InputToCSVTransform {
+class InputToCSVTransform {
 	private final InputStreamSplitter splitter;
 	
 	@Inject

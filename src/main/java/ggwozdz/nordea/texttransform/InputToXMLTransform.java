@@ -9,7 +9,7 @@ import java.io.OutputStream;
 
 import javax.inject.Inject;
 
-public final class InputToXMLTransform {
+class InputToXMLTransform {
 	private final InputStreamSplitter splitter;
 	
 	@Inject

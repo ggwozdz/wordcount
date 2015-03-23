@@ -9,19 +9,19 @@ import java.io.OutputStream;
 import javax.inject.Inject;
 
 public class TextTransformer {
-	private final InputToXMLTransform xmlRenderer;
-	private final InputToCSVTransform csvRenderer;
+	private final InputToXMLTransform toXMLTransform;
+	private final InputToCSVTransform toCSVTransform;
 	
 	@Inject
 	public TextTransformer(InputToXMLTransform xmlRenderer, InputToCSVTransform csvRenderer) {		
-		this.csvRenderer = csvRenderer;
-		this.xmlRenderer = xmlRenderer;
+		this.toCSVTransform = csvRenderer;
+		this.toXMLTransform = xmlRenderer;
 	}
 
-	public void processText(InputStream is, OutputStream os, OutputFormat outputFormat) throws IOException {
+	public void processText(InputStream input, OutputStream output, OutputFormat outputFormat) throws IOException {
 		switch(outputFormat){
-			case CSV: csvRenderer.convertInputToCSV(is, os); break;
-			case XML: xmlRenderer.convertInputToXML(is, os); break;				
+			case CSV: toCSVTransform.convertInputToCSV(input, output); break;
+			case XML: toXMLTransform.convertInputToXML(input, output); break;				
 		}		
 	}	
 }

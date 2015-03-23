@@ -11,7 +11,7 @@ import javax.xml.stream.XMLStreamWriter;
 
 import com.google.common.base.Strings;
 
-public class IntendingXMLOutputWriter {
+class IntendingXMLOutputWriter {
 	private final XMLStreamWriter xmlWriter;
 	private int depthCounter = 0;
 		
@@ -96,6 +96,6 @@ public class IntendingXMLOutputWriter {
 	
 	private void indentNextElement(int depth){
 		this.writeText("\n");
-		this.writeText(Strings.repeat("   ", depth));
+		this.writeText(Strings.repeat("    ", depth));
 	}
 }

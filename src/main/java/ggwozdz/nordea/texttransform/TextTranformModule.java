@@ -13,5 +13,4 @@ public class TextTranformModule extends AbstractModule {
 		bind(InputToXMLTransform.class);
 		bind(TextTransformer.class);		
 	}
-
 }

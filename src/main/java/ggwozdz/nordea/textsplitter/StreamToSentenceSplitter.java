@@ -8,7 +8,7 @@ import java.util.function.Consumer;
 
 import javax.inject.Inject;
 
-public class StreamToSentenceSplitter implements InputStreamSplitter {
+class StreamToSentenceSplitter implements InputStreamSplitter {
 	private final OnSentenceEndSplitter lineSplitter;
 	
 	@Inject
