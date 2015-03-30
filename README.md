@@ -65,4 +65,6 @@ Output:
     Sentence 1, Ala,kota,ma
     Sentence 2, bar,baz,Foo,xyz
 
- 
+##Other 
+Apllication is also availabel on github: https://github.com/ggwozdz/wordcount/
+
